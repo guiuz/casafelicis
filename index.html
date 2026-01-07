@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Felicis - A Alquimia Brasileira</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/img/Logomarca-png.png">
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'ouro': '#fecb00',
+              'ouro-dark': '#d4a000',
+              'preto': '#0a0a0a',
+              'verde-escuro': '#2e3b26',
+              'verde-claro': '#4c5a3d',
+              'creme': '#fdfaf5',
+              'areia': '#f5f0e6',
+            },
+            fontFamily: {
+              'sans': ['Manrope', 'sans-serif'],
+              'serif': ['Playfair Display', 'serif'],
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+              'texture': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+            },
+            animation: {
+              'marquee': 'marquee 30s linear infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'spin-slow': 'spin 12s linear infinite',
+              'fade-up': 'fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-100%)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              fadeUp: {
+                '0%': { opacity: '0', transform: 'translateY(40px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Granulação Premium (Noise Overlay) */
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+      }
+
+      /* Scrollbar Invisível mas funcional */
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* Efeito de Texto Vazado (Outline) */
+      .text-outline {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+        color: transparent;
+      }
+      .text-outline-dark {
+        -webkit-text-stroke: 1px rgba(76, 90, 61, 0.3);
+        color: transparent;
+      }
+
+      /* Ajustes de Imagem */
+      .hero-bottle {
+        filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
+      }
+      
+      /* Smooth Scroll Behavior Global */
+      html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-creme text-preto font-sans antialiased overflow-x-hidden selection:bg-ouro selection:text-preto">
+
+    <div class="noise-overlay"></div>
+
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-creme/80 backdrop-blur-md border-b border-verde-escuro/5">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="w-32">
+                 <img src="assets/img/Logomarca-png.png" alt="Casa Felicis" class="h-10 w-auto object-contain">
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#historia" class="text-sm uppercase tracking-widest text-verde-escuro hover:text-ouro transition-colors font-semibold">História</a>
+                <a href="#licores" class="text-sm uppercase tracking-widest text-verde-escuro hover:text-ouro transition-colors font-semibold">Licores</a>
+                <a href="#drinks" class="text-sm uppercase tracking-widest text-verde-escuro hover:text-ouro transition-colors font-semibold">Cocktails</a>
+            </nav>
+
+            <a href="#onde-comprar" class="hidden md:inline-block bg-verde-escuro text-creme px-6 py-2 rounded-full text-sm font-bold hover:bg-ouro hover:text-verde-escuro transition-all duration-300 shadow-lg hover:shadow-ouro/50">
+                LOJA OFICIAL
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-creme to-areia">
+            <div class="absolute top-0 right-0 w-2/3 h-full bg-verde-escuro/5 rounded-l-[100px] -z-10"></div>
+            <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-ouro/20 rounded-full blur-3xl mix-blend-multiply"></div>
+
+            <div class="container mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center h-full">
+                
+                <div class="lg:col-span-5 space-y-8 z-10">
+                    <div class="inline-block px-3 py-1 border border-verde-escuro/30 rounded-full text-xs font-bold text-verde-escuro tracking-widest uppercase mb-2">
+                        Licor Artesanal
+                    </div>
+                    <h1 class="font-serif text-6xl md:text-7xl lg:text-8xl text-verde-escuro leading-[0.9]">
+                        Alma <br>
+                        <span class="italic font-light text-ouro-dark">Brasileira</span> <br>
+                        Em Gotas.
+                    </h1>
+                    <p class="text-lg text-gray-600 max-w-md leading-relaxed border-l-2 border-ouro pl-6">
+                        Uma alquimia perfeita entre tradição e a riqueza tropical. Descubra a nova era dos licores artesanais.
+                    </p>
+                    <div class="flex items-center gap-6 pt-4">
+                        <a href="#licores" class="group flex items-center gap-3 text-verde-escuro font-bold text-lg">
+                            <span class="w-12 h-12 rounded-full border border-verde-escuro flex items-center justify-center group-hover:bg-verde-escuro group-hover:text-creme transition-all duration-300">↓</span>
+                            <span class="group-hover:translate-x-2 transition-transform">Descubra</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 relative flex justify-center lg:justify-end h-full min-h-[500px] items-center">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[500px] md:h-[500px] border border-ouro/30 rounded-full animate-spin-slow dashed-circle"></div>
+                    
+                    <img src="assets/img/casafelicis-abacaxi-e-chocolate.png" alt="Licor Casa Felicis" class="hero-bottle relative z-20 h-[60vh] w-auto object-contain animate-float mix-blend-normal">
+                    
+                    <div class="absolute bottom-20 left-10 bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/50 z-30 max-w-xs animate-float" style="animation-delay: 1s;">
+                        <div class="absolute -top-6 -right-6 w-20 h-20 bg-ouro/20 rounded-full blur-xl group-hover:bg-ouro/40 transition-colors"></div>
+                        <p class="font-serif text-2xl text-verde-escuro italic">Oak Blend & Ouro Negro</p>
+                        <p class="text-xs text-gray-500 mt-1 uppercase tracking-wide">Conheça esses sabores</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-verde-escuro py-8 overflow-hidden border-y border-ouro/20">
+            <div class="flex animate-marquee whitespace-nowrap">
+                <div class="flex items-center space-x-12 px-6">
+                    <span class="text-4xl md:text-6xl font-serif text-ouro italic">Alquimia</span>
+                    <span class="text-4xl md:text-6xl font-sans font-bold text-outline uppercase tracking-tighter">Casa Felicis</span>
+                    <span class="text-4xl md:text-6xl font-serif text-creme">Sabor & Tradição</span>
+                    <img src="assets/img/logo-3 cópia.png" class="h-12 w-12 opacity-50 grayscale invert">
+                    
+                    <span class="text-4xl md:text-6xl font-serif text-ouro italic">Alquimia</span>
+                    <span class="text-4xl md:text-6xl font-sans font-bold text-outline uppercase tracking-tighter">Casa Felicis</span>
+                    <span class="text-4xl md:text-6xl font-serif text-creme">Sabor & Tradição</span>
+                    <img src="assets/img/logo-3 cópia.png" class="h-12 w-12 opacity-50 grayscale invert">
+                </div>
+                <div class="flex items-center space-x-12 px-6">
+                    <span class="text-4xl md:text-6xl font-serif text-ouro italic">Alquimia</span>
+                    <span class="text-4xl md:text-6xl font-sans font-bold text-outline uppercase tracking-tighter">Casa Felicis</span>
+                    <span class="text-4xl md:text-6xl font-serif text-creme">Sabor & Tradição</span>
+                    <img src="assets/img/logo-3 cópia.png" class="h-12 w-12 opacity-50 grayscale invert">
+                    
+                    <span class="text-4xl md:text-6xl font-serif text-ouro italic">Alquimia</span>
+                    <span class="text-4xl md:text-6xl font-sans font-bold text-outline uppercase tracking-tighter">Casa Felicis</span>
+                    <span class="text-4xl md:text-6xl font-serif text-creme">Sabor & Tradição</span>
+                    <img src="assets/img/logo-3 cópia.png" class="h-12 w-12 opacity-50 grayscale invert">
+                </div>
+            </div>
+        </section>
+
+        <section id="historia" class="py-24 px-6 bg-creme relative">
+            <div class="container mx-auto">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="relative">
+                        <img src="assets/img/golden-breeze.jpg" alt="Origem Casa Felicis" class="w-full h-[700px] object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-700 ease-in-out">
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <h2 class="font-serif text-5xl md:text-6xl text-verde-escuro leading-tight">
+                            O Sabor que <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-ouro to-ouro-dark">Coroa Momentos.</span>
+                        </h2>
+                        <p class="text-lg text-gray-600 font-light leading-relaxed">
+                            A Casa Felicis não vende apenas licores; engarrafamos memórias. Nascida de uma receita de família e aperfeiçoada com técnicas modernas de maturação em carvalho, nossa bebida é um convite para desacelerar e apreciar.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-8 pt-4 border-t border-verde-escuro/10">
+                            <div>
+                                <p class="font-serif text-3xl text-verde-escuro">100%</p>
+                                <p class="text-xs uppercase tracking-widest text-gray-500 mt-1">Artesanal</p>
+                            </div>
+                            <div>
+                                <p class="font-serif text-3xl text-verde-escuro">5+</p>
+                                <p class="text-xs uppercase tracking-widest text-gray-500 mt-1">Sabores Exclusivos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 mt-12">
+                    <a href="#drinks" class="bg-creme text-verde-escuro px-10 py-4 rounded-full font-bold text-lg hover:scale-105 hover:bg-ouro transition-all duration-300 shadow-xl"> Quero conhecer </a>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="licores" class="py-24 bg-verde-escuro text-creme">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-ouro text-sm uppercase tracking-[0.3em]">Nossa Coroa</span>
+                    <h2 class="font-serif text-5xl md:text-6xl mt-2">A Coleção Exclusiva</h2>
+                    <p class="text-creme/60 mt-4 max-w-2xl mx-auto">Neste momento, dedicamos nossa produção artesanal a duas joias do paladar. Escolha a sua experiência.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-0 md:gap-12 items-center bg-creme/5 rounded-3xl overflow-hidden border border-creme/10 mb-16 hover:border-ouro/30 transition-all duration-500 group">
+                    <div class="h-96 md:h-[500px] relative bg-gradient-to-br from-creme/10 to-transparent flex items-center justify-center p-8 overflow-hidden">
+                        <div class="absolute inset-0 bg-[url('assets/img/Lançamento.jpg')] bg-cover bg-center opacity-20 mix-blend-overlay transition-transform duration-700 group-hover:scale-110"></div>
+                        <img src="assets/img/abacaxi.png" alt="Licor de Abacaxi" class="relative z-10 h-full object-contain drop-shadow-2xl group-hover:scale-105 group-hover:rotate-3 transition-transform duration-500">
+                    </div>
+                    <div class="p-8 md:p-12 space-y-6">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-[1px] bg-ouro"></span>
+                            <span class="text-ouro uppercase tracking-widest text-xs font-bold">O Tropical</span>
+                        </div>
+                        <h3 class="font-serif text-4xl md:text-5xl">Oak Blend Tropical</h3>
+                        <p class="text-creme/70 text-lg leading-relaxed">
+                            A acidez vibrante do abacaxi encontra a sofisticação do carvalho. Uma fusão dourada, complexa e de finalização elegante.
+                        </p>
+                        <div class="flex gap-4 text-sm font-bold text-ouro/80 uppercase tracking-wider py-4">
+                            <span>• 15% Vol</span>
+                            <span>• 500ml</span>
+                            <span>• Notas Amadeiradas</span>
+                        </div>
+                        <a href="abacaxi.html" class="inline-block bg-ouro text-verde-escuro px-8 py-3 rounded-full font-bold hover:bg-white transition-colors shadow-lg shadow-ouro/20">
+                            Descobrir História & Receitas
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-0 md:gap-12 items-center bg-creme/5 rounded-3xl overflow-hidden border border-creme/10 hover:border-ouro/30 transition-all duration-500 group">
+                    <div class="order-1 md:order-2 h-96 md:h-[500px] relative bg-gradient-to-bl from-black/40 to-transparent flex items-center justify-center p-8 overflow-hidden">
+                        <div class="absolute inset-0 bg-[url('assets/img/image_c7ce66.jpg')] bg-cover bg-center opacity-30 mix-blend-overlay transition-transform duration-700 group-hover:scale-110"></div>
+                        <img src="assets/img/chocolate.png" alt="Licor de Chocolate" class="relative z-10 h-full object-contain drop-shadow-2xl group-hover:scale-105 group-hover:-rotate-3 transition-transform duration-500">
+                    </div>
+                    <div class="order-2 md:order-1 p-8 md:p-12 space-y-6 md:text-right">
+                        <div class="flex items-center gap-3 md:justify-end">
+                            <span class="text-ouro uppercase tracking-widest text-xs font-bold">A Indulgência</span>
+                            <span class="w-8 h-[1px] bg-ouro"></span>
+                        </div>
+                        <h3 class="font-serif text-4xl md:text-5xl">Cacau Ouro Negro</h3>
+                        <p class="text-creme/70 text-lg leading-relaxed">
+                            Intensidade em cada gota. Cacau puro com toque aveludado de leite condensado. A sobremesa transformada em um brinde inesquecível.
+                        </p>
+                        <div class="flex gap-4 text-sm font-bold text-ouro/80 uppercase tracking-wider py-4 md:justify-end">
+                            <span>• 15% Vol</span>
+                            <span>• 500ml</span>
+                            <span>• Cremoso</span>
+                        </div>
+                        <a href="chocolate.html" class="inline-block bg-ouro text-verde-escuro px-8 py-3 rounded-full font-bold hover:bg-white transition-colors shadow-lg shadow-ouro/20">
+                            Descobrir História & Receitas
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="drinks" class="relative py-32 px-6 bg-cover bg-fixed bg-center" style="background-image: url('Landingpage.jpg');">
+            <div class="absolute inset-0 bg-preto/70 z-0"></div>
+            
+            <div class="container mx-auto relative z-10">
+                <div class="text-center mb-16">
+                    <span class="text-ouro font-bold tracking-widest uppercase text-sm">Mixology</span>
+                    <h2 class="font-serif text-5xl md:text-6xl text-white mt-2">Arte no Copo</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="group relative bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2">
+                        <div class="absolute -top-6 -right-6 w-20 h-20 bg-ouro/20 rounded-full blur-xl group-hover:bg-ouro/40 transition-colors"></div>
+                        <h3 class="font-serif text-3xl text-white mb-1">Golden Breeze</h3>
+                        <p class="text-ouro text-sm uppercase tracking-wider mb-4">Licor de Abacaxi</p>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">A refrescância tropical elevada pela complexidade do carvalho. Uma brisa dourada em cada gole.</p>
+                        <a href="#" class="text-white text-sm font-bold border-b border-ouro pb-1 hover:text-ouro transition-colors">VER RECEITA</a>
+                    </div>
+
+                    <div class="group relative bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2">
+                        <h3 class="font-serif text-3xl text-white mb-1">Caju Amadeirado</h3>
+                        <p class="text-ouro text-sm uppercase tracking-wider mb-4">Licor de Caju</p>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">A untuosidade do caju maduro encontra o perfume herbal do alecrim. Sofisticação purista.</p>
+                        <a href="#" class="text-white text-sm font-bold border-b border-ouro pb-1 hover:text-ouro transition-colors">VER RECEITA</a>
+                    </div>
+
+                    <div class="group relative bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2">
+                        <h3 class="font-serif text-3xl text-white mb-1">Velvet Chocolate</h3>
+                        <p class="text-ouro text-sm uppercase tracking-wider mb-4">Licor de Chocolate</p>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">Intenso, denso e provocante. A mistura perfeita com vodka premium para noites frias.</p>
+                        <a href="#" class="text-white text-sm font-bold border-b border-ouro pb-1 hover:text-ouro transition-colors">VER RECEITA</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="onde-comprar" class="py-32 bg-creme">
+            <div class="container mx-auto px-6">
+                <div class="bg-verde-escuro rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-full bg-[url('assets/img/se a embalagem.jpg')] bg-cover opacity-10 mix-blend-overlay"></div>
+                    <div class="absolute -top-20 -right-20 w-96 h-96 bg-ouro/20 rounded-full blur-3xl"></div>
+
+                    <div class="relative z-10">
+                        <h2 class="font-serif text-5xl md:text-7xl text-creme mb-8">Leve a Casa Felicis<br>para a sua casa.</h2>
+                        
+                        <div class="flex flex-wrap justify-center gap-6 mt-12">
+                            <a href="https://www.instagram.com/casa.felicis/" target="_blank" class="bg-creme text-verde-escuro px-10 py-4 rounded-full font-bold text-lg hover:scale-105 hover:bg-ouro transition-all duration-300 shadow-xl">
+                                Comprar pelo Instagram
+                            </a>
+                            <a href="https://wa.me/5544988024674" target="_blank" class="border border-creme text-creme px-10 py-4 rounded-full font-bold text-lg hover:bg-creme hover:text-verde-escuro transition-all duration-300">
+                                Comprar pelo WhatsApp
+                            </a>
+                        </div>
+
+                        <div class="flex justify-center gap-8 mt-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                            <a href="#" class="butto"><img src="assets/img/mercado-livre.png" class="h-24 brightness-0 invert"></a>
+                            <img src="assets/img/amazon.png" class="h-24 brightness-0 invert">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-preto text-creme pt-24 pb-12 border-t border-verde-escuro/30">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-20">
+                <div class="md:col-span-2">
+                    <img src="assets/img/Logomarca-png.png" class="h-16 brightness-0 invert mb-8 opacity-90">
+                    <p class="text-gray-400 max-w-sm leading-relaxed">
+                        Bebidas finas que celebram a cultura brasileira com um toque de alquimia. Aprecie com moderação.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-ouro font-serif text-xl mb-6">Explorar</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Nossa História</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Licores</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Receitas</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Imprensa</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-ouro font-serif text-xl mb-6">Contato</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li>contato@casafelicis.com.br</li>
+                        <li>+55 (44) 98802-4674</li>
+                        <li class="flex gap-4 mt-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-ouro hover:text-preto transition-colors">IG</a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-ouro hover:text-preto transition-colors">FB</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2025 Casa Felicis. Todos os direitos reservados.</p>
+                <p class="mt-2 md:mt-0">SE BEBER, NÃO DIRIJA.</p>
+            </div>
+        </div>
+        
+        <div class="w-full overflow-hidden opacity-[0.03] pointer-events-none mt-[-50px]">
+            <h1 class="text-[15vw] font-serif text-center text-white leading-none whitespace-nowrap">CASA FELICIS</h1>
+        </div>
+    </footer>
+
+    <script>
+        // Script simples para suavizar o header no scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'shadow-md');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2', 'shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>

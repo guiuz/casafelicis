@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oak Blend Tropical - Casa Felicis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/img/Logomarca-png.png">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'ouro': '#fecb00', 'verde-escuro': '#2e3b26', 'creme': '#fdfaf5',
+            },
+            fontFamily: { 'sans': ['Manrope', 'sans-serif'], 'serif': ['Playfair Display', 'serif'] }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-creme text-verde-escuro font-sans">
+    
+    <nav class="absolute w-full p-6 z-50 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-2 text-creme font-bold hover:text-ouro transition-colors">
+            ← Voltar para a Casa
+        </a>
+        <img src="assets/img/logo-2.png" class="h-10 w-auto">
+    </nav>
+
+    <header class="relative pt-32 pb-20 px-6 bg-[url('assets/img/se a embalagem.jpg')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-verde-escuro/90 mix-blend-multiply"></div>
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="text-center md:text-left">
+                <span class="text-ouro uppercase tracking-[0.4em] text-sm font-bold">A Coleção</span>
+                <h1 class="font-serif text-6xl md:text-8xl text-creme mt-2 mb-6">Oak Blend <br><span class="text-ouro italic">Tropical</span></h1>
+                <p class="text-creme/80 text-xl leading-relaxed max-w-md">
+                    O encontro inusitado entre o frescor ácido do abacaxi e a nobreza do carvalho.
+                </p>
+                <div class="mt-8 flex flex-col md:flex-row gap-4">
+                    <a href="https://wa.me/5544988024674?text=Olá,%20gostaria%20de%20pedir%20o%20Licor%20de%20Abacaxi!" target="_blank" class="bg-ouro text-verde-escuro px-8 py-3 rounded-full font-bold hover:bg-white transition-all shadow-lg text-center">
+                        Comprar Agora
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <img src="assets/img/abacaxi.png" alt="Garrafa Abacaxi" class="h-[60vh] object-contain drop-shadow-2xl animate-[float_6s_ease-in-out_infinite]">
+            </div>
+        </div>
+    </header>
+
+    <section class="py-24 px-6">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="font-serif text-4xl mb-6">A Alquimia Dourada</h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-12">
+                Nossa jornada começa com a seleção dos abacaxis no ponto exato de maturação, onde a doçura natural atinge seu ápice. Diferente de licores comuns, o Oak Blend Tropical passa por um processo inspirado na tanoaria clássica. A infusão descansa em contato com madeiras nobres, o que confere à bebida uma cor dourada profunda e notas de baunilha e especiarias que dançam com a acidez da fruta.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mt-16 border-t border-verde-escuro/10 pt-12">
+                <div class="p-6 bg-white shadow-sm rounded-xl">
+                    <h3 class="font-serif text-2xl mb-2 text-ouro-dark">O Aroma</h3>
+                    <p class="text-sm text-gray-600">Frutado intenso com fundo amadeirado sutil.</p>
+                </div>
+                <div class="p-6 bg-white shadow-sm rounded-xl">
+                    <h3 class="font-serif text-2xl mb-2 text-ouro-dark">O Paladar</h3>
+                    <p class="text-sm text-gray-600">Início doce e cítrico, evoluindo para um final seco e elegante.</p>
+                </div>
+                <div class="p-6 bg-white shadow-sm rounded-xl">
+                    <h3 class="font-serif text-2xl mb-2 text-ouro-dark">Harmonização</h3>
+                    <p class="text-sm text-gray-600">Queijos curados, carne suína e sobremesas de coco.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-verde-escuro text-creme relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-ouro uppercase tracking-widest text-xs">Mixology</span>
+                    <h2 class="font-serif text-5xl mb-6">Golden Breeze</h2>
+                    <p class="mb-8 opacity-80">O drink assinatura que celebra o verão o ano todo. Simples, sofisticado e refrescante.</p>
+                    
+                    <ul class="space-y-4 font-light text-lg mb-8 border-l border-ouro pl-6">
+                        <li>50 ml de <strong>Licor Oak Blend Tropical</strong></li>
+                        <li>40 ml de suco de laranja fresco</li>
+                        <li>Gelo em cubos grandes</li>
+                        <li>Twist de casca de laranja para decorar</li>
+                    </ul>
+                    <p class="italic text-sm text-ouro">Preparo: Misture os ingredientes em um copo baixo com gelo. Mexa suavemente para gelar e finalize com o óleo da casca de laranja.</p>
+                </div>
+                <div class="bg-white/10 rounded-full p-12 aspect-square flex items-center justify-center border border-white/20">
+                    <div class="text-center">
+                        <p class="font-serif text-3xl italic">"Um brinde à<br>alma solar."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-creme py-12 text-center border-t border-verde-escuro/10">
+        <p class="text-verde-escuro font-bold">Casa Felicis &copy; 2025</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cacau Ouro Negro - Casa Felicis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/img/Logomarca-png.png">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'ouro': '#fecb00', 'verde-escuro': '#2e3b26', 'chocolate': '#3E2723', 'creme': '#fdfaf5',
+            },
+            fontFamily: { 'sans': ['Manrope', 'sans-serif'], 'serif': ['Playfair Display', 'serif'] }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-[#1a1a1a] text-creme font-sans">
+    
+    <nav class="absolute w-full p-6 z-50 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-2 text-creme font-bold hover:text-ouro transition-colors">
+            ← Voltar para a Casa
+        </a>
+        <img src="assets/img/Logomarca-png.png" class="h-10 w-auto brightness-0 invert">
+    </nav>
+
+    <header class="relative pt-32 pb-20 px-6 bg-[url('assets/img/image_c7ce66.jpg')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-black/80"></div>
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="text-center md:text-left order-2 md:order-1">
+                <span class="text-ouro uppercase tracking-[0.4em] text-sm font-bold">Edição Premium</span>
+                <h1 class="font-serif text-6xl md:text-8xl text-creme mt-2 mb-6">Cacau <br><span class="text-ouro italic">Ouro Negro</span></h1>
+                <p class="text-creme/80 text-xl leading-relaxed max-w-md">
+                    Intenso, cremoso e inesquecível. A expressão máxima do chocolate em forma líquida.
+                </p>
+                <div class="mt-8 flex flex-col md:flex-row gap-4">
+                    <a href="https://wa.me/5544988024674?text=Olá,%20quero%20o%20Licor%20de%20Chocolate!" target="_blank" class="bg-ouro text-preto px-8 py-3 rounded-full font-bold hover:bg-white transition-all shadow-lg text-center">
+                        Comprar Agora
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center order-1 md:order-2">
+                <img src="assets/img/chocolate.png" alt="Garrafa Chocolate" class="h-[60vh] object-contain drop-shadow-[0_20px_50px_rgba(254,203,0,0.15)] animate-[float_6s_ease-in-out_infinite]">
+            </div>
+        </div>
+    </header>
+
+    <section class="py-24 px-6 bg-[#222]">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="font-serif text-4xl mb-6 text-ouro">Pura Indulgência</h2>
+            <p class="text-lg text-gray-400 leading-relaxed mb-12">
+                O Ouro Negro foi criado para os momentos em que o "bom" não é suficiente. Utilizamos cacau 50% selecionado, combinado com um toque secreto de leite condensado para garantir uma textura aveludada que cobre a boca. É uma bebida de sobremesa por excelência, equilibrando o amargor do cacau genuíno com a doçura nostálgica das receitas de família.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mt-16 border-t border-white/10 pt-12">
+                <div class="p-6 bg-white/5 border border-white/10 rounded-xl">
+                    <h3 class="font-serif text-2xl mb-2 text-ouro">Textura</h3>
+                    <p class="text-sm text-gray-400">Densa, licorosa e extremamente cremosa.</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 rounded-xl">
+                    <h3 class="font-serif text-2xl mb-2 text-ouro">Notas</h3>
+                    <p class="text-sm text-gray-400">Chocolate meio amargo, leite e um fundo sutil de baunilha.</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 rounded-xl">
+                    <h3 class="font-serif text-2xl mb-2 text-ouro">Serviço</h3>
+                    <p class="text-sm text-gray-400">Servir gelado (4°C) ou sobre sorvete de creme.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-ouro text-preto relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-preto/60 uppercase tracking-widest text-xs font-bold">Mixology</span>
+                    <h2 class="font-serif text-5xl mb-6">Chocolate Noir</h2>
+                    <p class="mb-8 font-medium">Para aquecer as noites ou encerrar um jantar com chave de ouro.</p>
+                    
+                    <ul class="space-y-4 text-lg mb-8 border-l border-preto/20 pl-6 font-bold">
+                        <li>60 ml de <strong>Licor Ouro Negro</strong></li>
+                        <li>15 ml de Vodka Premium</li>
+                        <li>Cacau em pó para decorar</li>
+                    </ul>
+                    <p class="italic text-sm text-preto/70">Preparo: Bata os ingredientes com gelo na coqueteleira vigorosamente. Sirva em taça martini previamente gelada e polvilhe cacau por cima.</p>
+                </div>
+                <div class="bg-preto/10 rounded-full p-12 aspect-square flex items-center justify-center border border-preto/5">
+                    <div class="text-center">
+                        <p class="font-serif text-3xl italic">"A sobremesa<br>perfeita."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#111] py-12 text-center border-t border-white/10">
+        <p class="text-gray-500 font-bold">Casa Felicis &copy; 2025</p>
+    </footer>
+
+</body>
+</html>
